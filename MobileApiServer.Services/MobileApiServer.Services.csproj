@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MobileApiServer.Core\MobileApiServer.Core.csproj" />
+    <ProjectReference Include="..\MobileApiServer.Models\MobileApiServer.Models.csproj" />
+  </ItemGroup>
+
+</Project>

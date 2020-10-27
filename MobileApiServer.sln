@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer", "MobileApiServer\MobileApiServer.csproj", "{9B0706DF-9A4A-4A80-A3D0-D584BA365A43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Handlers", "MobileApiServer.Handlers\MobileApiServer.Handlers.csproj", "{852D9DC8-DAD8-4873-B2AB-AF677DF9A4D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Providers", "MobileApiServer.Providers\MobileApiServer.Providers.csproj", "{C4EB8CD5-88B5-4921-8EF1-D23F123430E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Models", "MobileApiServer.Models\MobileApiServer.Models.csproj", "{BD65BE02-665B-49C4-B827-58F61FB31460}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Core", "MobileApiServer.Core\MobileApiServer.Core.csproj", "{2732B417-D84C-484E-81B9-E85BECB6F053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Services", "MobileApiServer.Services\MobileApiServer.Services.csproj", "{E48016CC-5A0A-499D-8167-0CEDF9449B7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B0706DF-9A4A-4A80-A3D0-D584BA365A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B0706DF-9A4A-4A80-A3D0-D584BA365A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B0706DF-9A4A-4A80-A3D0-D584BA365A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B0706DF-9A4A-4A80-A3D0-D584BA365A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{852D9DC8-DAD8-4873-B2AB-AF677DF9A4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{852D9DC8-DAD8-4873-B2AB-AF677DF9A4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{852D9DC8-DAD8-4873-B2AB-AF677DF9A4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{852D9DC8-DAD8-4873-B2AB-AF677DF9A4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4EB8CD5-88B5-4921-8EF1-D23F123430E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4EB8CD5-88B5-4921-8EF1-D23F123430E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4EB8CD5-88B5-4921-8EF1-D23F123430E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4EB8CD5-88B5-4921-8EF1-D23F123430E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD65BE02-665B-49C4-B827-58F61FB31460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD65BE02-665B-49C4-B827-58F61FB31460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD65BE02-665B-49C4-B827-58F61FB31460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD65BE02-665B-49C4-B827-58F61FB31460}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2732B417-D84C-484E-81B9-E85BECB6F053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2732B417-D84C-484E-81B9-E85BECB6F053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2732B417-D84C-484E-81B9-E85BECB6F053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2732B417-D84C-484E-81B9-E85BECB6F053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48016CC-5A0A-499D-8167-0CEDF9449B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48016CC-5A0A-499D-8167-0CEDF9449B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48016CC-5A0A-499D-8167-0CEDF9449B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48016CC-5A0A-499D-8167-0CEDF9449B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F069321B-7F67-4881-A337-9267F15C3524}
+	EndGlobalSection
+EndGlobal
