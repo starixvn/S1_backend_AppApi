@@ -10,6 +10,11 @@ using Newtonsoft.Json;
 
 namespace MobileApiServer.Controllers
 {
+    /// <summary>
+    /// Get Token from game provider
+    /// 1.Saba Sport
+    /// doc https://developer.onebook.dev/MobileAPPIntg/Index?PageName=integration N88_develop / n887730
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("[controller]")]
@@ -40,6 +45,11 @@ namespace MobileApiServer.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Disable token
+        /// </summary>
+        /// <param name="tp">third party, default = 1</param>
+        /// <returns></returns>
         [HttpPost("[action]")]
         public async Task<dynamic> Invalidate(int tp = 1)
         {

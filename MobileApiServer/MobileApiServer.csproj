@@ -17,17 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\ErrorMessage.Designer.cs">
+    <Compile Update="Properties\ErrorMessage.en-US.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ErrorMessage.resx</DependentUpon>
+      <DependentUpon>ErrorMessage.en-US.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\ErrorMessage.resx">
+    <EmbeddedResource Update="Properties\ErrorMessage.en-US.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ErrorMessage.Designer.cs</LastGenOutput>
+      <LastGenOutput>ErrorMessage.en-US.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -1,7 +1,9 @@
+using System.Globalization;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,20 @@ namespace MobileApiServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //i18n ref : https://docs.microsoft.com/zh-tw/aspnet/core/fundamentals/localization?view=aspnetcore-3.1
+            //set Support Cultures and default
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]{
+                    new CultureInfo("en-US")
+                };
+                options.DefaultRequestCulture = new RequestCulture("en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
+            services.AddLocalization();
+
             services.AddControllers().AddNewtonsoftJson();
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -46,8 +62,6 @@ namespace MobileApiServer
                 });
             services.AddMemoryCache();
 
-            //i18n ref : https://docs.microsoft.com/zh-tw/aspnet/core/fundamentals/localization?view=aspnetcore-3.1
-            services.AddLocalization();
             //provider layer
             services.AddSingleton<AccountProvider>();
             //handler layer
