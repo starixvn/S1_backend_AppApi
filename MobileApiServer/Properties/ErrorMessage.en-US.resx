@@ -117,9 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ExternalException" xml:space="preserve">
+    <value>External exception.</value>
+    <comment>-8</comment>
+  </data>
   <data name="InternalException" xml:space="preserve">
     <value>Internal exception.</value>
     <comment>-1</comment>
+  </data>
+  <data name="InvalidTarget" xml:space="preserve">
+    <value>Invalid target.</value>
+    <comment>-7</comment>
   </data>
   <data name="NotAvailable" xml:space="preserve">
     <value>Not available.</value>
@@ -136,6 +144,14 @@
   <data name="Success" xml:space="preserve">
     <value>Success.</value>
     <comment>0</comment>
+  </data>
+  <data name="SystemMaintenance" xml:space="preserve">
+    <value>System maintenance.</value>
+    <comment>-98</comment>
+  </data>
+  <data name="TargetNotFound" xml:space="preserve">
+    <value>Target not found.</value>
+    <comment>-6</comment>
   </data>
   <data name="UnknownError" xml:space="preserve">
     <value>Unknown error.</value>

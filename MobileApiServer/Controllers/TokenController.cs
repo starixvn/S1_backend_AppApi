@@ -3,8 +3,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using MobileApiServer.Core;
 using MobileApiServer.Extensions;
+using MobileApiServer.Models;
+using MobileApiServer.Properties;
 using MobileApiServer.Services;
 using Newtonsoft.Json;
 
@@ -23,11 +27,14 @@ namespace MobileApiServer.Controllers
         private readonly ILogger<TokenController> _logger;
         private readonly ITokenService _auth;
         private readonly IWebHostEnvironment _env;
-        public TokenController(ILogger<TokenController> logger, ITokenService auth, IWebHostEnvironment env)
+        private readonly IStringLocalizer _localizer;
+
+        public TokenController(ILogger<TokenController> logger, ITokenService auth, IWebHostEnvironment env, IStringLocalizerFactory factory)
         {
             _logger = logger;
             _auth = auth;
             _env = env;
+            _localizer = factory.Create(typeof(ErrorMessage));
         }
 
         /// <summary>
@@ -42,7 +49,7 @@ namespace MobileApiServer.Controllers
             _logger.LogInformation("GetToken:{uid}", uid);
             var result = await _auth.GetToken(uid);
             _logger.LogInformation("Result:{result}", JsonConvert.SerializeObject(result));
-            return result;
+            return ResultParser(result);
         }
 
         /// <summary>
@@ -58,7 +65,7 @@ namespace MobileApiServer.Controllers
             
             var result = await _auth.InvalidateToken(uid);
             _logger.LogInformation("Result:{result}", JsonConvert.SerializeObject(result));
-            return result;
+            return ResultParser(result);
         }
 
         [HttpPost("[action]")]
@@ -67,7 +74,7 @@ namespace MobileApiServer.Controllers
             _logger.LogInformation("VerifyToken:{token}", input.Token);
             var result = await _auth.VerifyToken(input.Token);
             _logger.LogInformation("Result:{result}", JsonConvert.SerializeObject(result));
-            return result;
+            return ResultParser(result);
         }
 
         #region private
@@ -81,10 +88,41 @@ namespace MobileApiServer.Controllers
         /// <returns></returns>
         private string GetVendorMemberId(int uid, int siteId)
         {
+            //TODO add get name form DB
             var result = $"{SiteName[siteId - 1]}_{uid}";
             if (_env.IsDevelopment())
             {
                 result = "D" + result;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// parse saba sports result to our result.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private InnerResult ResultParser(InnerResult input)
+        {
+            var result = input;
+            switch (input.Code)
+            {
+                case 1:     //System Error/ exception
+                    result.Code = (int)PublicError.ExternalException;
+                    result.Message = _localizer[PublicError.ExternalException.ToString()];
+                    break;
+                case 2:     //member not found
+                    result.Code = (int) PublicError.TargetNotFound;
+                    result.Message = _localizer[PublicError.TargetNotFound.ToString()];
+                    break;
+                case 9:     //Invalid vendor_id
+                    result.Code = (int)PublicError.InvalidTarget;
+                    result.Message = _localizer[PublicError.InvalidTarget.ToString()];
+                    break;
+                case 10:     //System is under maintenance
+                    result.Code = (int)PublicError.SystemMaintenance;
+                    result.Message = _localizer[PublicError.SystemMaintenance.ToString()];
+                    break;
             }
             return result;
         }

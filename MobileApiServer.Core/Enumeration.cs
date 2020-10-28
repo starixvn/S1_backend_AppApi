@@ -33,6 +33,10 @@
         OperationFailed = -3,
         UserOrPasswordNotMatch = -4,
         NotAvailable = -5,
+        TargetNotFound = -6,
+        InvalidTarget = -7,
+        ExternalException = -8,
+        SystemMaintenance = -98,
         UnknownError = -99
     }
 }
