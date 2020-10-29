@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AmountNotInLimit" xml:space="preserve">
+    <value>Amount not in limit.</value>
+    <comment>-10</comment>
+  </data>
   <data name="ExternalException" xml:space="preserve">
     <value>External exception.</value>
     <comment>-8</comment>
@@ -141,6 +145,10 @@
     <value>Operation failed.</value>
     <comment>-3</comment>
   </data>
+  <data name="StatusNotSuccess" xml:space="preserve">
+    <value>Status not success.</value>
+    <comment>-97</comment>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>Success.</value>
     <comment>0</comment>
@@ -160,5 +168,13 @@
   <data name="UserOrPasswordNotMatch" xml:space="preserve">
     <value>User or password not match.</value>
     <comment>-4</comment>
+  </data>
+  <data name="WrongAmount" xml:space="preserve">
+    <value>Wrong amount.</value>
+    <comment>-9</comment>
+  </data>
+  <data name="WrongVariables" xml:space="preserve">
+    <value>Wrong variables.</value>
+    <comment>-11</comment>
   </data>
 </root>
