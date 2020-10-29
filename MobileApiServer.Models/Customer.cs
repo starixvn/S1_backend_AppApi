@@ -46,4 +46,16 @@ namespace MobileApiServer.Models
         public bool Transfer { set; get; }
         public WalletStatus WalletStatus { set; get; }
     }
+
+    public class TpTransferInfoHistory
+    {
+        public int TpId { set; get; }
+        public string TpName { set; get; }
+        public string TransId { set; get; }
+        public decimal Amount { set; get; }
+        public int Direction { set; get; }
+        public DateTime CreateTime { set; get; }
+        public int Status { set; get; }
+        public string Memo { set; get; }
+    }
 }

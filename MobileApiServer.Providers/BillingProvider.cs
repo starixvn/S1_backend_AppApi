@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using MobileApiServer.Models;
@@ -34,6 +36,12 @@ namespace MobileApiServer.Providers
             walletInfo.Balance = balance;
 
             return walletInfo;
+        }
+
+        public async Task<IEnumerable<TpTransferInfoHistory>>  GetTransferRecent(int custId, int siteId, int topNum)
+        {
+            await using var conn = GetConnection();
+            return await conn.QueryAsync<TpTransferInfoHistory>("Member_TpTransferInfoRecent_Get", new { CustId = custId, SiteId = siteId, TopNum = topNum }, commandType: CommandType.StoredProcedure);
         }
     }
 

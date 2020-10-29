@@ -93,6 +93,8 @@ namespace MobileApiServer.Controllers
             if (_env.IsDevelopment())
             {
                 result = "D" + result;
+                //stupid special case
+                if (uid == 7 && siteId == 1) result = "D1_7";
             }
             return result;
         }

@@ -9,7 +9,6 @@ using MobileApiServer.Handlers;
 using MobileApiServer.Models;
 using MobileApiServer.Properties;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace MobileApiServer.Controllers
 {
@@ -25,6 +24,8 @@ namespace MobileApiServer.Controllers
             _billing = billingHandler;
             _localizer = factory.Create(typeof(ErrorMessage));
         }
+
+        #region get
 
         /// <summary>
         /// Get User Wallet
@@ -45,6 +46,18 @@ namespace MobileApiServer.Controllers
                 Message = _localizer[PublicError.InternalException.ToString()]
             };
         }
+
+        /// <summary>
+        /// Get Transfer Log
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("[action]")]
+        public async Task<dynamic> TransferRecent()
+        {
+            var result = await _billing.GetTransferRecent(User.Identity.CustId(), User.Identity.SiteId());
+            return new InnerResult{Data = result};
+        }
+        #endregion
 
         /// <summary>
         /// Transfer fund 

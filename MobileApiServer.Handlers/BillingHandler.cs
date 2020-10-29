@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 using MobileApiServer.Core;
 using MobileApiServer.Models;
 using MobileApiServer.Providers;
@@ -12,6 +14,8 @@ namespace MobileApiServer.Handlers
     {
         private readonly BillingProvider _billing;
         private readonly TpService _tpService;
+        //temp fixed tp name 
+        private readonly string[] _tpName = new[] {"", "Sportsbook Wallet"};
 
         public BillingHandler(BillingProvider billingProvider, TpService tpService)
         {
@@ -24,8 +28,9 @@ namespace MobileApiServer.Handlers
         /// </summary>
         /// <param name="uid"></param>
         /// <param name="siteId"></param>
+        /// <param name="tpId">default = 1</param>
         /// <returns></returns>
-        public async Task<WalletInfo> GetWalletInfo(int uid, int siteId)
+        public async Task<WalletInfo> GetWalletInfo(int uid, int siteId, int tpId=1)
         {
             var wallet = _billing.GetWalletInfo(uid, siteId);
             var tpResult = await _tpService.GetBalance(uid);
@@ -35,8 +40,8 @@ namespace MobileApiServer.Handlers
                 var tpBalance = ((JObject)tpResult.Data).ToObject<TpBalance>();
                 var w = new TpWallet
                 {
-                    TpId = 1,
-                    TpName = "Sportsbook Wallet",
+                    TpId = tpId,
+                    TpName = _tpName[tpId],
                     Description = "Include OneRNG, PP and Platinum Suite(AB)",
                     DisplayKey = "lbl_Wallet_Saba",
 
@@ -48,6 +53,28 @@ namespace MobileApiServer.Handlers
                 wallet.TpWallets= new List<TpWallet>{w};
             }
             return wallet;
+        }
+
+        /// <summary>
+        /// Get transfer log
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="siteId"></param>
+        /// <param name="topNum"></param>
+        /// <returns></returns>
+        public async Task<List<TpTransferInfoHistory>> GetTransferRecent(int uid, int siteId, int topNum=5)
+        {
+            var result = await _billing.GetTransferRecent(uid, siteId, topNum);
+
+            if (result == null) return null;
+
+            var list = result.ToList();
+            foreach (var log in list)
+            {
+                log.TpName = _tpName[log.TpId];
+            }
+            return list;
+
         }
 
         public async Task<InnerResult> Transfer(int uid, decimal amount, TpDirection direction, string host, string ip)
@@ -76,6 +103,7 @@ namespace MobileApiServer.Handlers
         }
     }
 
+    #region model class
     public class TransferResult
     {
         public int Status { get; set; } = (int)TransferStatus.Pending;
@@ -90,4 +118,5 @@ namespace MobileApiServer.Handlers
     {
         Success = 0, Fail = 1, Pending = 2, PendingD = 3
     }
+    #endregion
 }
