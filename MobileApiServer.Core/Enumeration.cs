@@ -1,5 +1,16 @@
 ﻿namespace MobileApiServer.Core
 {
+    public enum WalletStatus
+    {
+        Normal = 1,
+        Um = 2,
+        Error = 3,
+    }
+    public enum Direction
+    {
+        Add = 1,
+        Deduct = 2
+    }
     public enum CustStatus
     {
         Running = 1,
@@ -25,6 +36,9 @@
         OperationFailed =-3
     }
 
+    /// <summary>
+    /// Error message for API result
+    /// </summary>
     public enum PublicError
     {
         Success = 0,

@@ -64,14 +64,18 @@ namespace MobileApiServer
 
             //provider layer
             services.AddSingleton<AccountProvider>();
+            services.AddSingleton<BillingProvider>();
             //handler layer
             services.AddSingleton<AccountHandler>();
+            services.AddSingleton<BillingHandler>();
             //service layer
             services.AddHttpClient<ITokenService, SabaService>();
+            services.AddHttpClient<TpService>();
             //controller layer
             services.AddSingleton<JwtHelpers>();
             services.AddSingleton<AuthController>();
             services.AddSingleton<TokenController>();
+            services.AddSingleton<BillingController>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

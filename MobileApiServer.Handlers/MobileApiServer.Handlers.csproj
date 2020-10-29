@@ -12,6 +12,7 @@
     <ProjectReference Include="..\MobileApiServer.Core\MobileApiServer.Core.csproj" />
     <ProjectReference Include="..\MobileApiServer.Models\MobileApiServer.Models.csproj" />
     <ProjectReference Include="..\MobileApiServer.Providers\MobileApiServer.Providers.csproj" />
+    <ProjectReference Include="..\MobileApiServer.Services\MobileApiServer.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -21,7 +21,7 @@ namespace MobileApiServer.Controllers
     /// </summary>
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TokenController : Controller
     {
         private readonly ILogger<TokenController> _logger;

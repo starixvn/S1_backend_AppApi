@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using MobileApiServer.Core;
+using Newtonsoft.Json;
 
 namespace MobileApiServer.Models
 {
@@ -20,5 +23,27 @@ namespace MobileApiServer.Models
         public int Status { get; set; }
         public bool IsResetPwd { get; set; }
         public string Aff { get; set; }
+    }
+
+    public class WalletInfo
+    {
+        public decimal Balance { set; get; }
+        public string LastLoginTime { set; get; }
+        public string LastTransaction { set; get; }
+        public bool IsHideBalance { set; get; }
+        [JsonProperty("tpWallets")]
+        public List<TpWallet> TpWallets { set; get; }
+    }
+
+    public class TpWallet
+    {
+        public int TpId { set; get; }
+        public string DisplayKey { get; set; }
+        public string TpName { set; get; }
+        public string Description { set; get; }
+        public decimal Balance { set; get; }
+        public decimal Bonus { set; get; }
+        public bool Transfer { set; get; }
+        public WalletStatus WalletStatus { set; get; }
     }
 }
