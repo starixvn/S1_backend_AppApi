@@ -16,6 +16,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApiServer.Services", "MobileApiServer.Services\MobileApiServer.Services.csproj", "{E48016CC-5A0A-499D-8167-0CEDF9449B7F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8B40A08-2DAA-432F-9083-29D5354F28D9}"
+	ProjectSection(SolutionItems) = preProject
+		CodeGuide.md = CodeGuide.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
