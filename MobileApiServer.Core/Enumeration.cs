@@ -59,6 +59,7 @@
         WrongAmount = -9,
         AmountNotInLimit = -10,
         WrongVariables = -11,
+        UserNoVendorName = -12,
         StatusNotSuccess = -97,
         SystemMaintenance = -98,
         UnknownError = -99

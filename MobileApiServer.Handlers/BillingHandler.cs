@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Xml;
 using MobileApiServer.Core;
 using MobileApiServer.Models;
 using MobileApiServer.Providers;

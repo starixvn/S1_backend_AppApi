@@ -165,6 +165,10 @@
     <value>Unknown error.</value>
     <comment>-99</comment>
   </data>
+  <data name="UserNoVendorName" xml:space="preserve">
+    <value>User no vendor name.</value>
+    <comment>-12</comment>
+  </data>
   <data name="UserOrPasswordNotMatch" xml:space="preserve">
     <value>User or password not match.</value>
     <comment>-4</comment>

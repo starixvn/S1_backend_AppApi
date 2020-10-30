@@ -88,7 +88,7 @@ namespace MobileApiServer.Controllers
         /// <returns></returns>
         private string GetVendorMemberId(int uid, int siteId)
         {
-            //TODO add get name form DB
+            //TODO should add an SP to get vendor_name from DB
             var result = $"{SiteName[siteId - 1]}_{uid}";
             if (_env.IsDevelopment())
             {
