@@ -1,3 +1,4 @@
+## Project Overview
 - **MobileApiServer**
   - Properties
      - ErrorMessage.en-Us.resx : resource file ready for i18n, but API server seems shouldn't doing i18n.
@@ -22,3 +23,19 @@
 - **MobileApiServer.Services** => access outsite API
    - SabaService.cs : calling Saba Sport mobile API for token (it using interface in case more similar service)
    - TpService.cs : calling self TP server for balance/transfer
+  
+---  
+
+## TODO  
+* add exception/error catch
+* add log service (save to file...etc)
+* tokenController\GetVendorMemberId can change to get name from DB, but current SP "TpCustInfo_Get" will join 3 table was too wasted
+---  
+
+### Develop test account
+- for Nova88(siteId=1)  
+   diedtest/12345678, qatest01/1q2w3e4r, eddiethb/1q2w3e4r
+
+### Saba Sport Doc
+*  https://developer.onebook.dev/MobileAPPIntg/Index?PageName=integration  
+   N88_develop/n887730  
