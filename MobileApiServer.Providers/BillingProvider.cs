@@ -38,7 +38,14 @@ namespace MobileApiServer.Providers
             return walletInfo;
         }
 
-        public async Task<IEnumerable<TpTransferInfoHistory>>  GetTransferRecent(int custId, int siteId, int topNum)
+        /// <summary>
+        /// Get transfer log
+        /// </summary>
+        /// <param name="custId">uid</param>
+        /// <param name="siteId"></param>
+        /// <param name="topNum">top n log</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<TpTransferInfoHistory>> GetTransferRecent(int custId, int siteId, int topNum)
         {
             await using var conn = GetConnection();
             return await conn.QueryAsync<TpTransferInfoHistory>("Member_TpTransferInfoRecent_Get", new { CustId = custId, SiteId = siteId, TopNum = topNum }, commandType: CommandType.StoredProcedure);

@@ -35,6 +35,15 @@ namespace MobileApiServer.Services
             return result;
         }
 
+        /// <summary>
+        /// Transfer fund between server
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="amount"></param>
+        /// <param name="direction"></param>
+        /// <param name="input"></param>
+        /// <param name="tpId"></param>
+        /// <returns></returns>
         public async Task<InnerResult> FundTransfer(int uid, decimal amount, TpDirection direction, Dictionary<string, string> input, int tpId = 1)
         {
             //TODO log it

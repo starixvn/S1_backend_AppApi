@@ -5,13 +5,14 @@
   - Controllers
      - AuthController.cs : for app get API server auth token
      - BillingController.cs : for app get balance, transfer and get transfer log
-     - TestController.cs : some test method seal in #if DEBUG tag , *can be remove if want*
+     - TestController.cs : some test method seal in `#if DEBUG` tag , *can be remove if want*
      - TokenController.cs : for app get game token
      - WeatherFrecastController.cs : .NET core demo function , *can be remove if want* 
   - Extensions
      - IndentityExtension.cs : for getting info from user claims
   - Helpers
-     - JwtHelpers.cs : handle JWT token stuff 
+     - JwtHelpers.cs : handle JWT token stuff  
+  - appsettings.json : include the config that project needed.
 - **MobileApiServer.Core** => stand alone library for tool and enum
 - **MobileApiServer.Handlers** => handle data process before throw to controller layer
   - AccountHandler.cs : login and logout
@@ -39,3 +40,14 @@
 ### Saba Sport Doc
 *  https://developer.onebook.dev/MobileAPPIntg/Index?PageName=integration  
    N88_develop/n887730  
+---  
+
+## How to test it  
+- **F5** run it, if every thing working fine, it should open https://localhost:44300/weatherforecast   
+   ![image](https://i.imgur.com/ldB5ZdW.png)  
+   It just a .NET Core API default page, leave it in project because it can use for check project start success, you can remove it if you want.  
+- For test the API, please follow [document](https://www.notion.so/2020-10-Mobile-API-Server-436cd4b50d514b87b40dc727eca8f8f7), all things start from `/api/auth`  
+   ![image](https://i.imgur.com/n32AEDF.png)  
+   If your develop environment can access the DEV database, then you can login success.   
+- All other API applied *[Authorize]* attitude (only TestController didn't), so calling those API need provide **Authorization** in Header like this.  
+   ![image](https://i.imgur.com/DEZhDrG.png)
