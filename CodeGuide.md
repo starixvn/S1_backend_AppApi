@@ -4,9 +4,13 @@
   - Controllers
      - AuthController.cs : for app get API server auth token
      - BillingController.cs : for app get balance, transfer and get transfer log
-     - TestController.cs : some test method seal in #if DEBUG tag , can be remove if want
+     - TestController.cs : some test method seal in #if DEBUG tag , *can be remove if want*
      - TokenController.cs : for app get game token
-     - WeatherFrecastController.cs : .NET core demo function , can be remove if want 
+     - WeatherFrecastController.cs : .NET core demo function , *can be remove if want* 
+  - Extensions
+     - IndentityExtension.cs : for getting info from user claims
+  - Helpers
+     - JwtHelpers.cs : handle JWT token stuff 
 - **MobileApiServer.Core** => stand alone library for tool and enum
 - **MobileApiServer.Handlers** => handle data process before throw to controller layer
   - AccountHandler.cs : login and logout
