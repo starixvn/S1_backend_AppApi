@@ -40,6 +40,9 @@ namespace MobileApiServer
                 options.SupportedUICultures = supportedCultures;
             });
 
+            // Register the Swagger services
+            services.AddSwaggerDocument();
+
             services.AddLocalization();
 
             services.AddControllers().AddNewtonsoftJson();
@@ -85,6 +88,19 @@ namespace MobileApiServer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Register the Swagger generator and the Swagger UI middlewares
+            app.UseOpenApi(settings=>
+            {
+                settings.PostProcess = (document, request) =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Mobile API";
+                    document.Info.Description = "This REST API is designed to support native apps and SPA";
+                };
+            });
+
+            app.UseSwaggerUi3();
 
             app.UseHttpsRedirection();
 
