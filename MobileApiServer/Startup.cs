@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using MobileApiServer.Controllers;
 using MobileApiServer.Handlers;
@@ -40,6 +42,9 @@ namespace MobileApiServer
                 options.SupportedUICultures = supportedCultures;
             });
 
+            // Register the Swagger services
+            services.AddSwaggerDocument();
+
             services.AddLocalization();
 
             services.AddControllers().AddNewtonsoftJson();
@@ -64,23 +69,45 @@ namespace MobileApiServer
 
             //provider layer
             services.AddSingleton<AccountProvider>();
+            services.AddSingleton<BillingProvider>();
             //handler layer
             services.AddSingleton<AccountHandler>();
+            services.AddSingleton<BillingHandler>();
             //service layer
             services.AddHttpClient<ITokenService, SabaService>();
+            services.AddHttpClient<TpService>();
             //controller layer
             services.AddSingleton<JwtHelpers>();
             services.AddSingleton<AuthController>();
             services.AddSingleton<TokenController>();
+            services.AddSingleton<BillingController>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            // temporary location
+            // C:\\sources\\AppApi\\MobileApiServer
+            var path = Directory.GetCurrentDirectory();
+            loggerFactory.AddFile($"{path}\\Logs\\Log.txt");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Register the Swagger generator and the Swagger UI middlewares
+            app.UseOpenApi(settings=>
+            {
+                settings.PostProcess = (document, request) =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Mobile API";
+                    document.Info.Description = "This REST API is designed to support native apps and SPA";
+                };
+            });
+
+            app.UseSwaggerUi3();
 
             app.UseHttpsRedirection();
 

@@ -21,7 +21,7 @@ namespace MobileApiServer.Controllers
     /// </summary>
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TokenController : Controller
     {
         private readonly ILogger<TokenController> _logger;
@@ -88,11 +88,13 @@ namespace MobileApiServer.Controllers
         /// <returns></returns>
         private string GetVendorMemberId(int uid, int siteId)
         {
-            //TODO add get name form DB
+            //TODO should add an SP to get vendor_name from DB
             var result = $"{SiteName[siteId - 1]}_{uid}";
             if (_env.IsDevelopment())
             {
                 result = "D" + result;
+                //stupid special case
+                if (uid == 7 && siteId == 1) result = "D1_7";
             }
             return result;
         }

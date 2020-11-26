@@ -1,5 +1,21 @@
 ﻿namespace MobileApiServer.Core
 {
+    public enum WalletStatus
+    {
+        Normal = 1,
+        Um = 2,
+        Error = 3,
+    }
+    public enum Direction
+    {
+        Add = 1,
+        Deduct = 2
+    }
+    public enum TpDirection
+    {
+        ToTp = 1,
+        ToMain = 2
+    }
     public enum CustStatus
     {
         Running = 1,
@@ -22,9 +38,13 @@
     {
         UnknownError = -1,
         NullOrEmpty = -2,
-        OperationFailed =-3
+        OperationFailed = -3,
+        StatusNotSuccess = -4
     }
 
+    /// <summary>
+    /// Error message for API result
+    /// </summary>
     public enum PublicError
     {
         Success = 0,
@@ -36,6 +56,11 @@
         TargetNotFound = -6,
         InvalidTarget = -7,
         ExternalException = -8,
+        WrongAmount = -9,
+        AmountNotInLimit = -10,
+        WrongVariables = -11,
+        UserNoVendorName = -12,
+        StatusNotSuccess = -97,
         SystemMaintenance = -98,
         UnknownError = -99
     }

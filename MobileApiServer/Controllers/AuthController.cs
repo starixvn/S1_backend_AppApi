@@ -18,8 +18,8 @@ namespace MobileApiServer.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly JwtHelpers _jwt;
         private readonly AccountHandler _accountHandler;
+        private readonly JwtHelpers _jwt;
         private readonly IStringLocalizer _localizer;
 
         public AuthController(JwtHelpers jwt, AccountHandler accountHandler, IStringLocalizerFactory factory)
@@ -30,18 +30,20 @@ namespace MobileApiServer.Controllers
         }
 
         /// <summary>
-        /// Login with siteId
+        ///     Login with siteId
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
+        /// <response code="200">You're login successfully</response>
         [AllowAnonymous]
         [HttpPost("")]
+        [ProducesResponseType(typeof(InnerResult), 200)]
         public dynamic SignIn(LoginViewModel login)
         {
             var header = Request.GetTypedHeaders();
 
             var ip = Tools.GetRemoteIpAddressV4(Request.HttpContext);
-            var result = _accountHandler.UserLogin(login.Username, login.Password, login.SiteId, ip.ToString(), 
+            var result = _accountHandler.UserLogin(login.Username, login.Password, login.SiteId, ip.ToString(),
                 header.Referer?.ToString(), header.Headers[HeaderNames.UserAgent],
                 out Customer customer, out string token);
             if (result.Success)
@@ -51,7 +53,9 @@ namespace MobileApiServer.Controllers
                     Data = _jwt.GenerateToken(customer, token)
                 };
             }
+
             #region deal with fail result
+
             var ir = new InnerResult {Success = false};
             switch (result.Code)
             {
@@ -70,7 +74,7 @@ namespace MobileApiServer.Controllers
         }
 
         /// <summary>
-        /// Logout
+        ///     Logout
         /// </summary>
         /// <returns></returns>
         [HttpPost("[action]")]
@@ -80,10 +84,7 @@ namespace MobileApiServer.Controllers
             //old code have "courierAdapter.MyPostAsync" not sure doing what, didn't implement
             var result = _accountHandler.Logout(User.Identity.CustId(), User.Identity.Token(), ip.ToString());
             //success
-            if (result)
-            {
-                return new InnerResult();
-            }
+            if (result) return new InnerResult();
 
             return new InnerResult
             {
@@ -95,10 +96,24 @@ namespace MobileApiServer.Controllers
 
         public class LoginViewModel
         {
+            /// <summary>
+            ///     Login's username
+            /// </summary>
+            /// <example>qatest01</example>
             [JsonProperty("username")]
             public string Username { get; set; }
+
+            /// <summary>
+            ///     Login's password
+            /// </summary>
+            /// <example>1q2w3e4r</example>
             [JsonProperty("password")]
             public string Password { get; set; }
+
+            /// <summary>
+            ///     Login's siteId (by default is 1)
+            /// </summary>
+            /// <example>1</example>
             [JsonProperty("siteId")]
             public int SiteId { get; set; }
         }

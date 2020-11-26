@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer", "MobileApiServer\MobileApiServer.csproj", "{9B0706DF-9A4A-4A80-A3D0-D584BA365A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApiServer", "MobileApiServer\MobileApiServer.csproj", "{9B0706DF-9A4A-4A80-A3D0-D584BA365A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Handlers", "MobileApiServer.Handlers\MobileApiServer.Handlers.csproj", "{852D9DC8-DAD8-4873-B2AB-AF677DF9A4D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApiServer.Handlers", "MobileApiServer.Handlers\MobileApiServer.Handlers.csproj", "{852D9DC8-DAD8-4873-B2AB-AF677DF9A4D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Providers", "MobileApiServer.Providers\MobileApiServer.Providers.csproj", "{C4EB8CD5-88B5-4921-8EF1-D23F123430E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApiServer.Providers", "MobileApiServer.Providers\MobileApiServer.Providers.csproj", "{C4EB8CD5-88B5-4921-8EF1-D23F123430E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Models", "MobileApiServer.Models\MobileApiServer.Models.csproj", "{BD65BE02-665B-49C4-B827-58F61FB31460}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApiServer.Models", "MobileApiServer.Models\MobileApiServer.Models.csproj", "{BD65BE02-665B-49C4-B827-58F61FB31460}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Core", "MobileApiServer.Core\MobileApiServer.Core.csproj", "{2732B417-D84C-484E-81B9-E85BECB6F053}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApiServer.Core", "MobileApiServer.Core\MobileApiServer.Core.csproj", "{2732B417-D84C-484E-81B9-E85BECB6F053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileApiServer.Services", "MobileApiServer.Services\MobileApiServer.Services.csproj", "{E48016CC-5A0A-499D-8167-0CEDF9449B7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileApiServer.Services", "MobileApiServer.Services\MobileApiServer.Services.csproj", "{E48016CC-5A0A-499D-8167-0CEDF9449B7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8B40A08-2DAA-432F-9083-29D5354F28D9}"
+	ProjectSection(SolutionItems) = preProject
+		CodeGuide.md = CodeGuide.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
